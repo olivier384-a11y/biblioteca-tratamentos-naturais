@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#245b43">
+  <title>Biblioteca de Tratamentos Naturais</title>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <style>
+    :root {
+      --green: #245b43;
+      --green-light: #eaf3ec;
+      --cream: #faf9f4;
+      --text: #26352c;
+      --muted: #68766c;
+      --border: #e1e8e1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background: var(--green);
+      color: white;
+      padding: 25px 18px 24px;
+      border-radius: 0 0 24px 24px;
+    }
+
+    .brand {
+      font-size: 13px;
+      opacity: .9;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 25px;
+      line-height: 1.25;
+      margin: 0 0 9px;
+    }
+
+    header p {
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+      color: #e6f0e8;
+    }
+
+    main {
+      max-width: 760px;
+      margin: auto;
+      padding: 20px 16px 36px;
+    }
+
+    .search {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: white;
+      font-size: 16px;
+      outline-color: var(--green);
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin: 8px 0 14px;
+    }
+
+    .categories {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 14px;
+      margin-bottom: 8px;
+    }
+
+    .category {
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: white;
+      padding: 10px 14px;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .category.active {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+    }
+
+    .recipes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .recipe {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 15px;
+      padding: 15px;
+      color: var(--text);
+      cursor: pointer;
+      min-height: 170px;
+    }
+
+    .recipe-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .recipe-category {
+      font-size: 11px;
+      color: var(--green);
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .recipe strong {
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .recipe small {
+      color: var(--muted);
+      line-height: 1.4;
+      margin-top: 8px;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      text-align: center;
+      padding: 25px 10px;
+    }
+
+    .notice {
+      margin-top: 24px;
+      padding: 14px;
+      background: var(--green-light);
+      border-radius: 12px;
+      color: #345642;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .detail {
+      display: none;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+      line-height: 1.65;
+    }
+
+    .detail h2 { line-height: 1.35; }
+
+    .detail h3 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .back {
+      border: 0;
+      background: var(--green-light);
+      color: var(--green);
+      padding: 11px 14px;
+      border-radius: 9px;
+      cursor: pointer;
+      margin-bottom: 18px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 20px;
+    }
+
+    @media (max-width: 360px) {
+      .recipes { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand">🌿 SUA BIBLIOTECA NATURAL</div>
+    <h1>Biblioteca de Tratamentos Naturais</h1>
+    <p>Explore receitas, preparações com plantas e cuidados naturais organizados em um só lugar.</p>
+  </header>
+
+  <main>
+    <section id="catalog">
+      <input
+        id="search"
+        class="search"
+        type="search"
+        placeholder="🔎 Buscar uma receita..."
+        aria-label="Buscar receitas"
+      >
+
+      <h2>Explore por categoria</h2>
+
+      <nav class="categories" id="categories">
+        <button class="category active" data-category="Todas">Todas</button>
+        <button class="category" data-category="Digestão">Digestão</button>
+        <button class="category" data-category="Sono e relaxamento">Sono e relaxamento</button>
+        <button class="category" data-category="Cuidados capilares">Cuidados capilares</button>
+        <button class="category" data-category="Pele">Pele</button>
+      </nav>
+
+      <h2>Receitas da biblioteca</h2>
+      <div class="recipes" id="recipes"></div>
+
+      <div class="notice">
+        <strong>Importante:</strong> as receitas demonstrativas desta versão
+        servem apenas para testar o aplicativo. Os conteúdos definitivos
+        deverão ser revisados antes da publicação. Plantas medicinais podem
+        apresentar contraindicações e interações com medicamentos.
+      </div>
+    </section>
+
+    <section class="detail" id="detail">
+      <button class="back" id="back">← Voltar às receitas</button>
+      <div id="detail-content"></div>
+    </section>
+  </main>
+
+  <footer>
+    Biblioteca de Tratamentos Naturais 🌿
+  </footer>
+
+  <script>
+    const tg = window.Telegram?.WebApp;
+
+    if (tg) {
+      tg.ready();
+      tg.expand();
+    }
+
+    // Conteúdo demonstrativo. Substituir pelas receitas revisadas.
+    const recipes = [
+      {
+        id: 1,
+        title: "Infusão de camomila",
+        category: "Sono e relaxamento",
+        icon: "🌼",
+        summary: "Exemplo de preparação em infusão.",
+        ingredients: ["Flores de camomila próprias para infusão"],
+        preparation: "Adicionar água quente às flores e deixar em infusão. A quantidade, o tempo e a forma de uso precisam ser definidos a partir de uma receita validada.",
+        usage: "Consultar a orientação específica da receita revisada.",
+        care: "Verificar alergias, contraindicações e possíveis interações antes do uso."
+      },
+      {
+        id: 2,
+        title: "Preparação de gengibre",
+        category: "Digestão",
+        icon: "🫚",
+        summary: "Exemplo de receita para a categoria digestiva.",
+        ingredients: ["Gengibre próprio para uso alimentar"],
+        preparation: "A preparação deverá seguir as quantidades e instruções da receita selecionada para a biblioteca.",
+        usage: "Definir após revisão da receita e das orientações de segurança.",
+        care: "Considerar condições de saúde, medicamentos em uso e possíveis efeitos adversos."
+      },
+      {
+        id: 3,
+        title: "Preparação capilar",
+        category: "Cuidados capilares",
+        icon: "🌿",
+        summary: "Exemplo de conteúdo para cuidados capilares.",
+        ingredients: ["Ingredientes cosméticos adequados à preparação"],
+        preparation: "Inserir o modo de preparo específico após validar a fórmula e os ingredientes.",
+        usage: "Informar a forma de aplicação e a frequência somente após revisão.",
+        care: "Verificar a tolerância da pele e interromper a aplicação se ocorrer irritação."
+      },
+      {
+        id: 4,
+        title: "Cuidados naturais com a pele",
+        category: "Pele",
+        icon: "🍃",
+        summary: "Exemplo de conteúdo para cuidados da pele.",
+        ingredients: ["Ingredientes adequados para uso tópico"],
+        preparation: "Adicionar a preparação validada antes de disponibilizar esta receita.",
+        usage: "Definir conforme a formulação final.",
+        care: "Evitar ingredientes irritantes e não aplicar preparações desconhecidas em pele lesionada."
+      }
+    ];
+
+    let selectedCategory = "Todas";
+
+    const recipeList = document.getElementById("recipes");
+    const search = document.getElementById("search");
+    const catalog = document.getElementById("catalog");
+    const detail = document.getElementById("detail");
+    const detailContent = document.getElementById("detail-content");
+
+    function renderRecipes() {
+      const query = search.value.toLocaleLowerCase("pt-BR");
+
+      const filtered = recipes.filter(recipe => {
+        const matchesCategory =
+          selectedCategory === "Todas" ||
+          recipe.category === selectedCategory;
+
+        const matchesSearch =
+          (recipe.title + " " + recipe.category + " " + recipe.summary)
+            .toLocaleLowerCase("pt-BR")
+            .includes(query);
+
+        return matchesCategory && matchesSearch;
+      });
+
+      recipeList.replaceChildren();
+
+      if (!filtered.length) {
+        const empty = document.createElement("p");
+        empty.className = "empty";
+        empty.textContent = "Nenhuma receita encontrada.";
+        recipeList.appendChild(empty);
+        return;
+      }
+
+      filtered.forEach(recipe => {
+        const card = document.createElement("button");
+        card.className = "recipe";
+        card.type = "button";
+
+        const icon = document.createElement("span");
+        icon.className = "recipe-icon";
+        icon.textContent = recipe.icon;
+
+        const category = document.createElement("span");
+        category.className = "recipe-category";
+        category.textContent = recipe.category;
+
+        const title = document.createElement("strong");
+        title.textContent = recipe.title;
+
+        const summary = document.createElement("small");
+        summary.textContent = recipe.summary;
+
+        card.append(icon, category, title, summary);
+        card.addEventListener("click", () => openRecipe(recipe.id));
+        recipeList.appendChild(card);
+      });
+    }
+
+    function openRecipe(id) {
+      const recipe = recipes.find(item => item.id === id);
+      if (!recipe) return;
+
+      detailContent.replaceChildren();
+
+      const heading = document.createElement("h2");
+      heading.textContent = recipe.icon + " " + recipe.title;
+      detailContent.appendChild(heading);
+
+      const sections = [
+        ["Finalidade", recipe.summary],
+        ["Ingredientes", recipe.ingredients.join(", ")],
+        ["Modo de preparo", recipe.preparation],
+        ["Modo de uso", recipe.usage],
+        ["Contraindicações e cuidados", recipe.care]
+      ];
+
+      sections.forEach(([title, content]) => {
+        const h = document.createElement("h3");
+        h.textContent = title;
+
+        const p = document.createElement("p");
+        p.textContent = content;
+
+        detailContent.append(h, p);
+      });
+
+      catalog.style.display = "none";
+      detail.style.display = "block";
+      window.scrollTo(0, 0);
+    }
+
+    document.getElementById("back").addEventListener("click", () => {
+      detail.style.display = "none";
+      catalog.style.display = "block";
+      window.scrollTo(0, 0);
+    });
+
+    document.getElementById("categories").addEventListener("click", event => {
+      const button = event.target.closest("button[data-category]");
+      if (!button) return;
+
+      selectedCategory = button.dataset.category;
+
+      document.querySelectorAll(".category").forEach(item => {
+        item.classList.toggle("active", item === button);
+      });
+
+      renderRecipes();
+    });
+
+    search.addEventListener("input", renderRecipes);
+
+    renderRecipes();
+  </script>
+</body>
+</html>
