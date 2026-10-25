@@ -219,13 +219,22 @@
 
       <h2>Explore por categoria</h2>
 
-      <nav class="categories" id="categories">
-        <button class="category active" data-category="Todas">Todas</button>
-        <button class="category" data-category="Digestão">Digestão</button>
-        <button class="category" data-category="Sono e relaxamento">Sono e relaxamento</button>
-        <button class="category" data-category="Cuidados capilares">Cuidados capilares</button>
-        <button class="category" data-category="Pele">Pele</button>
-      </nav>
+     
+<nav class="categories" id="categories">
+  <button class="category active" data-category="Todas">Todas</button>
+  <button class="category" data-category="Saúde metabólica e cardiovascular">Saúde metabólica e cardiovascular</button>
+  <button class="category" data-category="Saúde feminina e ciclo menstrual">Saúde feminina e ciclo menstrual</button>
+  <button class="category" data-category="Circulação, rins e retenção de líquidos">Circulação, rins e retenção de líquidos</button>
+  <button class="category" data-category="Pele, cabelo e cuidados estéticos">Pele, cabelo e cuidados estéticos</button>
+  <button class="category" data-category="Saúde mental, sono e comportamento">Saúde mental, sono e comportamento</button>
+  <button class="category" data-category="Saúde respiratória e infecções">Saúde respiratória e infecções</button>
+  <button class="category" data-category="Saúde neurológica, óssea e articular">Saúde neurológica, óssea e articular</button>
+  <button class="category" data-category="Digestão, boca e região abdominal">Digestão, boca e região abdominal</button>
+  <button class="category" data-category="Dores musculares e corporais">Dores musculares e corporais</button>
+  <button class="category" data-category="Alimentação e bebidas nutritivas">Alimentação e bebidas nutritivas</button>
+  <button class="category" data-category="Outras receitas e cuidados naturais">Outras receitas e cuidados naturais</button>
+</nav>
+
 
       <h2>Receitas da biblioteca</h2>
       <div class="recipes" id="recipes"></div>
@@ -257,52 +266,103 @@
     }
 
     // Conteúdo demonstrativo. Substituir pelas receitas revisadas.
-    const recipes = [
-      {
-        id: 1,
-        title: "Infusão de camomila",
-        category: "Sono e relaxamento",
-        icon: "🌼",
-        summary: "Exemplo de preparação em infusão.",
-        ingredients: ["Flores de camomila próprias para infusão"],
-        preparation: "Adicionar água quente às flores e deixar em infusão. A quantidade, o tempo e a forma de uso precisam ser definidos a partir de uma receita validada.",
-        usage: "Consultar a orientação específica da receita revisada.",
-        care: "Verificar alergias, contraindicações e possíveis interações antes do uso."
-      },
-      {
-        id: 2,
-        title: "Preparação de gengibre",
-        category: "Digestão",
-        icon: "🫚",
-        summary: "Exemplo de receita para a categoria digestiva.",
-        ingredients: ["Gengibre próprio para uso alimentar"],
-        preparation: "A preparação deverá seguir as quantidades e instruções da receita selecionada para a biblioteca.",
-        usage: "Definir após revisão da receita e das orientações de segurança.",
-        care: "Considerar condições de saúde, medicamentos em uso e possíveis efeitos adversos."
-      },
-      {
-        id: 3,
-        title: "Preparação capilar",
-        category: "Cuidados capilares",
-        icon: "🌿",
-        summary: "Exemplo de conteúdo para cuidados capilares.",
-        ingredients: ["Ingredientes cosméticos adequados à preparação"],
-        preparation: "Inserir o modo de preparo específico após validar a fórmula e os ingredientes.",
-        usage: "Informar a forma de aplicação e a frequência somente após revisão.",
-        care: "Verificar a tolerância da pele e interromper a aplicação se ocorrer irritação."
-      },
-      {
-        id: 4,
-        title: "Cuidados naturais com a pele",
-        category: "Pele",
-        icon: "🍃",
-        summary: "Exemplo de conteúdo para cuidados da pele.",
-        ingredients: ["Ingredientes adequados para uso tópico"],
-        preparation: "Adicionar a preparação validada antes de disponibilizar esta receita.",
-        usage: "Definir conforme a formulação final.",
-        care: "Evitar ingredientes irritantes e não aplicar preparações desconhecidas em pele lesionada."
-      }
-    ];
+   
+const recipes = [
+  ["Chá de Folhas de Oliveira","Saúde metabólica e cardiovascular","🌿"],
+  ["Chá de Hibisco e Canela","Saúde metabólica e cardiovascular","🌺"],
+  ["Suco de Beterraba e Maçã","Saúde metabólica e cardiovascular","🍎"],
+  ["Chá de Cúrcuma e Pimenta-Preta","Saúde metabólica e cardiovascular","🍵"],
+  ["Chá de Folhas de Amora","Saúde metabólica e cardiovascular","🌿"],
+  ["Chá de Ginseng","Saúde metabólica e cardiovascular","🌱"],
+  ["Chá de Pata-de-Vaca","Saúde metabólica e cardiovascular","🍃"],
+  ["Água de Quiabo (Baba de Quiabo)","Saúde metabólica e cardiovascular","🥒"],
+  ["Conserva de Canela e Maçã","Saúde metabólica e cardiovascular","🍎"],
+  ["Tintura de Cavalinha e Canela","Saúde metabólica e cardiovascular","🌿"],
+  ["Tintura de Equinácea, Ginseng e Erva-de-São-João","Saúde metabólica e cardiovascular","🌱"],
+  ["Xarope de Agave com Ervas","Saúde metabólica e cardiovascular","🍯"],
+  ["Xarope de Bardana e Dente-de-Leão","Saúde metabólica e cardiovascular","🌿"],
+  ["Chá Verde com Gengibre","Saúde metabólica e cardiovascular","🍵"],
+  ["Tintura de Garcinia Cambogia","Saúde metabólica e cardiovascular","🌿"],
+  ["Chá de Gengibre e Cúrcuma","Saúde metabólica e cardiovascular","🍵"],
+
+  ["Chá de Maca Peruana","Saúde feminina e ciclo menstrual","🌸"],
+  ["Chá de Trevo-Vermelho","Saúde feminina e ciclo menstrual","🌺"],
+  ["Tintura de Dong Quai e Vitex","Saúde feminina e ciclo menstrual","🌿"],
+  ["Tintura de Sálvia e Inhame-Mexicano","Saúde feminina e ciclo menstrual","🌿"],
+  ["Xarope de Alcaçuz e Sálvia","Saúde feminina e ciclo menstrual","🍯"],
+  ["Xarope de Alquemila e Lúpulo","Saúde feminina e ciclo menstrual","🍯"],
+  ["Conserva de Brócolis e Cenoura","Saúde feminina e ciclo menstrual","🥕"],
+  ["Suco de Romã e Melancia","Saúde feminina e ciclo menstrual","🍉"],
+  ["Suco de Uva com Linhaça","Saúde feminina e ciclo menstrual","🍇"],
+  ["Vitamina de Abacate e Amêndoas","Saúde feminina e ciclo menstrual","🥑"],
+  ["Vitamina de Morango, Banana e Linhaça","Saúde feminina e ciclo menstrual","🍓"],
+
+  ["Chá de Dente-de-Leão","Circulação, rins e retenção de líquidos","🌿"],
+  ["Chá de Cavalinha e Erva-Mate","Circulação, rins e retenção de líquidos","🍵"],
+  ["Tintura de Cavalinha e Dente-de-Leão","Circulação, rins e retenção de líquidos","🌱"],
+  ["Creme de Cavalinha e Aloe Vera","Circulação, rins e retenção de líquidos","🍃"],
+  ["Creme de Ginkgo Biloba e Centella Asiática (Gotu Kola)","Circulação, rins e retenção de líquidos","🌿"],
+  ["Óleo de Arnica e Alho","Circulação, rins e retenção de líquidos","🫙"],
+  ["Óleo de Arnica e Calêndula para Aliviar o Inchaço","Circulação, rins e retenção de líquidos","🌼"],
+  ["Óleo de Castanha-da-Índia e Ginkgo Biloba","Circulação, rins e retenção de líquidos","🌿"],
+  ["Óleo de Hamamélis e Alecrim para Cuidado das Pernas","Circulação, rins e retenção de líquidos","🌱"],
+  ["Óleo de Semente de Uva e Castanha-da-Índia","Circulação, rins e retenção de líquidos","🍇"],
+  ["Pomada de Calêndula e Hamamélis","Circulação, rins e retenção de líquidos","🌼"],
+  ["Spray Refrescante de Aloe Vera e Centáurea","Circulação, rins e retenção de líquidos","🍃"],
+  ["Chá de Castanha-da-Índia","Circulação, rins e retenção de líquidos","🍵"],
+  ["Chá de Centáurea e Camomila","Digestão, boca e região abdominal","🌼"],
+
+  ["Esfoliante Corporal de Café e Açúcar","Pele, cabelo e cuidados estéticos","☕"],
+  ["Gel Corporal de Centelha Asiática e Hamamélis","Pele, cabelo e cuidados estéticos","🍃"],
+  ["Máscara Corporal de Argila Verde e Grapefruit","Pele, cabelo e cuidados estéticos","🌿"],
+  ["Óleo de Massagem de Cipreste e Junípero","Pele, cabelo e cuidados estéticos","🫙"],
+  ["Óleo de Massagem de Hortelã-Pimenta e Gengibre","Pele, cabelo e cuidados estéticos","🌱"],
+  ["Tônico Corporal de Vinagre de Maçã e Alecrim","Pele, cabelo e cuidados estéticos","🍃"],
+  ["Creme Firmador de Colágeno e Retinol","Pele, cabelo e cuidados estéticos","🧴"],
+  ["Gel Firmador com Aloe Vera e Óleo de Semente de Uva","Pele, cabelo e cuidados estéticos","🍃"],
+  ["Máscara Firmadora de Abacate e Aveia","Pele, cabelo e cuidados estéticos","🥑"],
+  ["Máscara Firmadora de Clara de Ovo","Pele, cabelo e cuidados estéticos","🥚"],
+  ["Spray Tônico Firmador de Hamamélis","Pele, cabelo e cuidados estéticos","🌿"],
+  ["Infusão Capilar de Ginkgo Biloba e Camomila","Pele, cabelo e cuidados estéticos","🌼"],
+  ["Máscara Capilar de Aloe Vera e Alecrim","Pele, cabelo e cuidados estéticos","🍃"],
+  ["Máscara Capilar de Ginkgo Biloba e Aloe Vera","Pele, cabelo e cuidados estéticos","🌿"],
+  ["Mix de Óleos para Massagem Capilar","Pele, cabelo e cuidados estéticos","🫙"],
+  ["Óleo Capilar de Jojoba e Anis-Estrelado","Pele, cabelo e cuidados estéticos","🌱"],
+  ["Óleo Capilar Noturno de Jojoba e Alecrim","Pele, cabelo e cuidados estéticos","🌿"],
+  ["Spray Noturno de Aloe Vera e Lavanda","Pele, cabelo e cuidados estéticos","💜"],
+  ["Tônico Capilar de Ginseng e Urtiga","Pele, cabelo e cuidados estéticos","🌱"],
+  ["Infusão Capilar de Alecrim e Gengibre","Pele, cabelo e cuidados estéticos","🍃"],
+  ["Infusão Capilar de Cavalinha e Semente de Abóbora","Pele, cabelo e cuidados estéticos","🌿"],
+
+  ["Chá de Camomila e Cúrcuma","Saúde mental, sono e comportamento","🌼"],
+  ["Chá Digestivo de Funcho e Alfafa","Digestão, boca e região abdominal","🍵"],
+  ["Chá de Erva-Doce e Anis-Estrelado","Digestão, boca e região abdominal","🌿"],
+
+  ["Conserva de Abóbora e Gengibre","Alimentação e bebidas nutritivas","🎃"],
+  ["Salada de Abacate e Salmão","Alimentação e bebidas nutritivas","🥑"],
+  ["Smoothie de Espinafre e Banana","Alimentação e bebidas nutritivas","🥤"],
+  ["Sopa de Tomate com Manjericão","Alimentação e bebidas nutritivas","🍲"],
+  ["Chá de Gengibre e Limão","Alimentação e bebidas nutritivas","🍋"],
+  ["Xarope de Gengibre e Limão","Alimentação e bebidas nutritivas","🍯"],
+  ["Smoothie de Frutas Vermelhas e Chia","Alimentação e bebidas nutritivas","🍓"],
+  ["Salada de Frutas com Colágeno e Suco de Uva","Alimentação e bebidas nutritivas","🍇"],
+  ["Smoothie Refrescante de Colágeno e Uva","Alimentação e bebidas nutritivas","🥤"],
+  ["Conserva de Berinjela e Pimentão","Alimentação e bebidas nutritivas","🍆"],
+  ["Suco de Couve, Abacaxi e Pepino","Alimentação e bebidas nutritivas","🥤"],
+  ["Suco Detox de Pepino e Couve","Alimentação e bebidas nutritivas","🥒"],
+  ["Vitamina de Abacate e Chia","Alimentação e bebidas nutritivas","🥑"]
+].map((item, index) => ({
+  id: index + 1,
+  title: item[0],
+  category: item[1],
+  icon: item[2],
+  summary: "Título cadastrado no catálogo. Conteúdo completo a ser incluído.",
+  ingredients: ["Conteúdo a inserir"],
+  preparation: "Conteúdo a inserir.",
+  usage: "Conteúdo a inserir.",
+  care: "Consultar a receita completa e revisar os cuidados antes de usar."
+}));
+
 
     let selectedCategory = "Todas";
 
