@@ -351,18 +351,130 @@ const recipes = [
   ["Suco de Couve, Abacaxi e Pepino","Alimentação e bebidas nutritivas","🥤"],
   ["Suco Detox de Pepino e Couve","Alimentação e bebidas nutritivas","🥒"],
   ["Vitamina de Abacate e Chia","Alimentação e bebidas nutritivas","🥑"]
-].map((item, index) => ({
-  id: index + 1,
-  title: item[0],
-  category: item[1],
-  icon: item[2],
-  summary: "Título cadastrado no catálogo. Conteúdo completo a ser incluído.",
-  ingredients: ["Conteúdo a inserir"],
-  preparation: "Conteúdo a inserir.",
-  usage: "Conteúdo a inserir.",
-  care: "Consultar a receita completa e revisar os cuidados antes de usar."
-}));
+].map((item, index) => {
+  const completas = {
+    "Chá de Cúrcuma e Pimenta-Preta": {
+      summary: "Combina a cúrcuma, conhecida por seus compostos anti-inflamatórios, com a pimenta-preta, que pode aumentar a absorção da curcumina.",
+      ingredients: [
+        "Cúrcuma em pó, a gosto.",
+        "1 pitada de pimenta-preta.",
+        "1 xícara de água quente."
+      ],
+      preparation: "1. Aqueça a água até ficar bem quente. 2. Adicione a cúrcuma e a pimenta-preta. 3. Misture bem e deixe descansar por alguns minutos. 4. Mexa novamente antes de consumir.",
+      usage: "Consumir de 3 a 4 vezes por semana.",
+      conservation: "Consumir logo após o preparo.",
+      care: "Pessoas que utilizam anticoagulantes ou antiagregantes plaquetários devem consultar um profissional de saúde antes do consumo regular. A cúrcuma pode causar desconforto gastrointestinal e exige cautela em pessoas com problemas na vesícula biliar. Evitar o uso medicinal durante a gravidez sem orientação profissional."
+    },
 
+    "Chá de Folhas de Oliveira": {
+      summary: "Pode auxiliar na regulação da pressão arterial.",
+      ingredients: [
+        "Folhas de oliveira.",
+        "Água."
+      ],
+      preparation: "1. Ferva a água e desligue o fogo. 2. Adicione as folhas de oliveira. 3. Tampe e deixe em infusão por alguns minutos. 4. Coe antes de consumir.",
+      usage: "A orientação fornecida é consumir uma xícara diariamente.",
+      conservation: "Consumir preferencialmente após o preparo. Não guardar por períodos prolongados.",
+      care: "Pode potencializar o efeito de medicamentos para pressão arterial e reduzir excessivamente a pressão. Quem utiliza anticoagulantes ou medicamentos para diabetes deve consultar um profissional de saúde antes de consumir. Evitar o uso medicinal durante a gravidez e a amamentação sem orientação profissional."
+    },
+
+    "Chá de Gengibre e Limão": {
+      summary: "Combina o gengibre, conhecido por suas propriedades anti-inflamatórias, com o limão, fonte de vitamina C.",
+      ingredients: [
+        "Gengibre fresco a gosto.",
+        "Suco de limão a gosto.",
+        "1 xícara de água."
+      ],
+      preparation: "1. Aqueça a água até ferver. 2. Adicione o gengibre fatiado e deixe ferver em fogo baixo por 5 minutos. 3. Desligue o fogo e deixe amornar um pouco. 4. Acrescente o suco de limão e misture.",
+      usage: "Consumir uma xícara diariamente.",
+      conservation: "Consumir preferencialmente logo após o preparo.",
+      care: "Pode causar azia, irritação gástrica ou desconforto abdominal. Pessoas com refluxo ou gastrite devem avaliar a tolerância. Quem utiliza anticoagulantes ou medicamentos para pressão arterial deve consultar um profissional de saúde antes do consumo diário."
+    },
+
+    "Chá de Hibisco e Canela": {
+      summary: "Contém antioxidantes que podem contribuir para a saúde cardiovascular e auxiliar no controle da pressão arterial.",
+      ingredients: [
+        "2 colheres de chá de hibisco seco.",
+        "1 pau de canela.",
+        "Água."
+      ],
+      preparation: "1. Ferva a água e desligue o fogo. 2. Adicione o hibisco e o pau de canela. 3. Tampe e deixe em infusão por 5 a 10 minutos. 4. Coe antes de consumir.",
+      usage: "Consumir de 2 a 3 vezes por semana.",
+      conservation: "Consumir preferencialmente após o preparo.",
+      care: "Evitar o uso medicinal durante a gravidez e a amamentação sem orientação profissional. O hibisco pode reduzir a pressão arterial e interagir com medicamentos anti-hipertensivos. Pessoas que utilizam esses medicamentos devem consultar um profissional de saúde antes do consumo."
+    },
+
+    "Suco de Beterraba e Maçã": {
+      summary: "Fornece nitratos naturais, fibras e antioxidantes que podem contribuir para a saúde cardiovascular e auxiliar no controle da pressão arterial.",
+      ingredients: [
+        "1 beterraba cozida.",
+        "1 maçã.",
+        "Água a gosto."
+      ],
+      preparation: "1. Descasque a beterraba cozida e corte-a em pedaços. 2. Lave a maçã, retire as sementes e corte-a. 3. Coloque a beterraba, a maçã e a água no liquidificador. 4. Bata até obter uma mistura homogênea.",
+      usage: "A orientação fornecida é consumir uma vez ao dia.",
+      conservation: "Consumir logo após o preparo.",
+      care: "Pessoas com histórico de cálculos renais, especialmente os de oxalato de cálcio, devem moderar o consumo de beterraba e buscar orientação profissional. Quem tem pressão arterial baixa ou utiliza medicamentos anti-hipertensivos deve ter cuidado, pois o suco pode contribuir para a redução da pressão arterial."
+    },
+
+    "Salada de Abacate e Salmão": {
+      summary: "Fornece ômega-3 e potássio, nutrientes que contribuem para a saúde cardiovascular.",
+      ingredients: [
+        "Abacate.",
+        "Salmão.",
+        "Ingredientes para temperar a salada a gosto."
+      ],
+      preparation: "1. Grelhe o salmão até ficar completamente cozido. 2. Corte o abacate em pedaços. 3. Misture o abacate com os ingredientes da salada. 4. Acrescente o salmão grelhado e sirva.",
+      usage: "Consumir de 2 a 3 vezes por semana.",
+      conservation: "Consumir logo após o preparo. Se necessário, refrigerar prontamente em recipiente fechado.",
+      care: "Controlar as porções conforme as necessidades alimentares. Pessoas com alergia a peixe devem evitar o salmão. Para quem precisa restringir o potássio por doença renal, o consumo de abacate deve ser orientado por um profissional de saúde."
+    },
+
+    "Smoothie de Espinafre e Banana": {
+      summary: "Fornece potássio, mineral que contribui para o equilíbrio da pressão arterial.",
+      ingredients: [
+        "Espinafre.",
+        "1 banana.",
+        "Água a gosto.",
+        "Gelo a gosto."
+      ],
+      preparation: "1. Lave bem as folhas de espinafre. 2. Coloque o espinafre, a banana, a água e o gelo no liquidificador. 3. Bata até obter uma mistura homogênea.",
+      usage: "Consumir de 3 a 4 vezes por semana.",
+      conservation: "Consumir logo após o preparo.",
+      care: "Pessoas com doença renal ou que precisam controlar o potássio no sangue devem consultar um profissional de saúde antes de consumir regularmente. O espinafre também contém vitamina K, cuja ingestão deve ser mantida consistente por quem utiliza varfarina."
+    },
+
+    "Sopa de Tomate com Manjericão": {
+      summary: "Fornece licopeno e antioxidantes que podem contribuir para a saúde cardiovascular.",
+      ingredients: [
+        "Tomates.",
+        "Alho a gosto.",
+        "Folhas de manjericão a gosto.",
+        "Água a gosto.",
+        "Sal e temperos a gosto."
+      ],
+      preparation: "1. Lave os tomates e corte-os em pedaços. 2. Coloque os tomates em uma panela com o alho e um pouco de água. 3. Cozinhe até os tomates ficarem macios. 4. Bata a mistura no liquidificador, se desejar uma textura cremosa. 5. Retorne à panela, acrescente o manjericão e aqueça por mais alguns minutos. 6. Ajuste os temperos e sirva.",
+      usage: "Consumir de 2 a 3 vezes por semana.",
+      conservation: "Guarde as sobras em recipiente fechado na geladeira por até 3 dias. Reaqueça bem antes de consumir.",
+      care: "Pessoas com alergia a tomate devem evitar a receita. Para quem precisa controlar a pressão arterial, recomenda-se limitar a adição de sal."
+    }
+  };
+
+  const receita = completas[item[0]];
+
+  return {
+    id: index + 1,
+    title: item[0],
+    category: item[1],
+    icon: item[2],
+    summary: receita?.summary ?? "Conteúdo completo a ser incluído.",
+    ingredients: receita?.ingredients ?? ["Conteúdo a inserir."],
+    preparation: receita?.preparation ?? "Conteúdo a inserir.",
+    usage: receita?.usage ?? "Conteúdo a inserir.",
+    conservation: receita?.conservation ?? "Informação a incluir.",
+    care: receita?.care ?? "Cuidados a revisar quando a receita completa for cadastrada."
+  };
+});
 
     let selectedCategory = "Todas";
 
@@ -434,12 +546,13 @@ const recipes = [
       detailContent.appendChild(heading);
 
       const sections = [
-        ["Finalidade", recipe.summary],
-        ["Ingredientes", recipe.ingredients.join(", ")],
-        ["Modo de preparo", recipe.preparation],
-        ["Modo de uso", recipe.usage],
-        ["Contraindicações e cuidados", recipe.care]
-      ];
+  ["Finalidade", recipe.summary],
+  ["Ingredientes", recipe.ingredients.join("\n")],
+  ["Modo de preparo", recipe.preparation],
+  ["Modo de uso", recipe.usage],
+  ["Conservação", recipe.conservation],
+  ["Contraindicações e cuidados", recipe.care]
+];
 
       sections.forEach(([title, content]) => {
         const h = document.createElement("h3");
@@ -447,7 +560,7 @@ const recipes = [
 
         const p = document.createElement("p");
         p.textContent = content;
-
+p.style.whiteSpace = "pre-line";
         detailContent.append(h, p);
       });
 
