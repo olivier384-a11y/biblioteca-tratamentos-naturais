@@ -1495,9 +1495,27 @@ p.style.whiteSpace = "pre-line";
       renderRecipes();
     });
 
+   
     search.addEventListener("input", renderRecipes);
 
     renderRecipes();
+
+    // Monetag: anúncio In-App Interstitial
+    setTimeout(() => {
+      if (typeof show_12130058 === "function") {
+        show_12130058({
+          type: "inApp",
+          inAppSettings: {
+            frequency: 2,
+            capping: 0.1,
+            interval: 30,
+            timeout: 5,
+            everyPage: false
+          }
+        });
+      }
+    }, 1000);
   </script>
 </body>
 </html>
+
